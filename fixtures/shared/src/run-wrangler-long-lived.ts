@@ -42,7 +42,7 @@ async function runLongLivedWrangler(command: string[], cwd: string) {
 		"../../packages/wrangler/bin/wrangler.js",
 		command,
 		{
-			stdio: [/*stdin*/ "ignore", /*stdout*/ "pipe", /*stderr*/ "pipe", "ipc"],
+			stdio: [/*stdin*/ "ignore", /*stdout*/ "inherit", /*stderr*/ "inherit", "ipc"],
 			cwd,
 		}
 	).on("message", (message) => {
@@ -52,8 +52,8 @@ async function runLongLivedWrangler(command: string[], cwd: string) {
 	});
 
 	const chunks: Buffer[] = [];
-	wranglerProcess.stdout?.on("data", (chunk) => chunks.push(chunk));
-	wranglerProcess.stderr?.on("data", (chunk) => chunks.push(chunk));
+	// wranglerProcess.stdout?.on("data", (chunk) => chunks.push(chunk));
+	// wranglerProcess.stderr?.on("data", (chunk) => chunks.push(chunk));
 
 	setTimeout(() => {
 		if (settledReadyPromise) return;
