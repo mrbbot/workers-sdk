@@ -59,7 +59,7 @@ const report = [
 	`|\`miniflare\`|${miniflareVersionConstraint}|${miniflareVersion}|`,
 	`|\`workerd\`|${workerdVersionConstraint}|${workerdVersion}|`,
 	"",
-	"Please ensure constraints are pinned, and `miniflare`/`workerd` minor versions match."
+	"Please ensure constraints are pinned, and `miniflare`/`workerd` minor versions match.",
 	"",
 ].join("\n");
 await fs.writeFile("runtime-versions.md", report);
