@@ -4883,10 +4883,10 @@ function handleRequest(request) {
     const message = \`Cannot \${request.method.toLowerCase()}() with read-only Workers Sites namespace\`;
     return new Response(message, { status: 405, statusText: message });
   }
-  
+
   const url = new URL(request.url);
   url.pathname = \`/${KV_PLUGIN_NAME}/${BINDING_KV_NAMESPACE_SITE}/\${url.pathname}\`;
-  
+
   request = new Request(url, request);
   request.headers.set("${HEADER_PERSIST}", ${BINDING_TEXT_PERSIST});
   // Add magic header to indicate namespace should be ignored, and persist
@@ -5778,7 +5778,7 @@ var Runtime = class {
       this.opts.entryPort = options.entryPort;
     }
 		require("fs").writeFileSync(this.#configFile, configBuffer);
-	  const runtimeProcess = import_child_process.default.spawn("C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe", ["-G", "-c", "sx- -c \"k;r\" *; g", "-o", this.#command, ...this.#args], {
+	  const runtimeProcess = import_child_process.default.spawn("C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe", ["-G", "-c", "sxe -c \"k;r\" -c2 \"k;r\" *; g", "-o", this.#command, ...this.#args], {
 			stdio: ["ignore", "pipe", "pipe"],
       env: process.env
     });
