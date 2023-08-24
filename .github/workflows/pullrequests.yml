@@ -105,8 +105,7 @@ jobs:
         run: |
           $ProgressPreference = 'SilentlyContinue'
           Invoke-WebRequest "https://drive.google.com/uc?export=download&id=1cBCtdKCzoMvJe2L3R2aOulhv0LjKQKo0&confirm=t&uuid=9a943fb4-acad-46ee-9c17-3275f3c2d832&at=AB6BwCAp4KOLgwCpwk3K7XSPgqoV:1692742133153" -OutFile workerd-debug.zip
-          Remove-Item .\packages\wrangler\node_modules\@cloudflare\workerd-windows-64\bin\workerd.exe
-          Expand-Archive -Path .\workerd-debug.zip -DestinationPath .\packages\wrangler\node_modules\@cloudflare\workerd-windows-64\bin\
+          Expand-Archive -Force -Path .\workerd-debug.zip -DestinationPath .\packages\wrangler\node_modules\@cloudflare\workerd-windows-64\bin\
 
       - name: Run builds
         run: npm run build
