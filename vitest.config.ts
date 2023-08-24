@@ -10,9 +10,9 @@ export default defineConfig({
 		// here is a simpler short term fix.
 		// Note that this will not cause tests to pass that should fail. It just means that hanging
 		// tests will take longer to fail than they would before.
-		testTimeout: 50_000,
-		hookTimeout: 50_000,
-		teardownTimeout: 50_000,
+		testTimeout: 100_000,
+		hookTimeout: 100_000,
+		teardownTimeout: 100_000,
 		useAtomics: true,
 	},
 });
