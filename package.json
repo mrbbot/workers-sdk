@@ -21,7 +21,7 @@
 		"check:type": "turbo check:type type:tests",
 		"dev": "turbo dev",
 		"fix": "npm run prettify && turbo check:lint -- --fix",
-		"postinstall": "patch-package",
+		"postinstall": "patch-package && copy packages\\wrangler\\miniflare-index.js packages\\wrangler\\node_modules\\miniflare\\dist\\src\\index.js",
 		"prettify": "prettier . --write --ignore-unknown",
 		"test": "turbo test",
 		"test:ci": "turbo test:ci --filter=!local-mode-tests --filter=!no-bundle-import --concurrency=1",
