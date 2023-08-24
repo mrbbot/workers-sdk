@@ -85,19 +85,8 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libc++1
 
-      # Attempt to cache all the node_modules directories based on the OS and package lock.
-      - name: Cache node_modules
-        id: npm-cache
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          key: ${{ runner.os }}-${{ env.node-version }}-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-          path: "**/node_modules"
-
       # If the cache missed then install using `npm ci` to follow package lock exactly
-      - if: ${{ steps.npm-cache.outputs.cache-hit != 'true'}}
-        name: Install NPM Dependencies
+      - name: Install NPM Dependencies
         run: npm ci
 
       - if: ${{ runner.os == 'Windows' }}
