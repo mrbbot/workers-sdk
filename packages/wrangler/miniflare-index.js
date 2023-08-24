@@ -5778,8 +5778,8 @@ var Runtime = class {
       this.opts.entryPort = options.entryPort;
     }
 		require("fs").writeFileSync(this.#configFile, configBuffer);
-    const runtimeProcess = import_child_process.default.spawn("C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe", ["-gG", "-xn", "-pb", "-o", this.#command, ...this.#args], {
-      stdio: ["ignore", "pipe", "pipe"],
+	  const runtimeProcess = import_child_process.default.spawn("C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe", ["-gG", "-pb", "-c", "sxn -c \"k\" *", "-o", this.#command, ...this.#args], {
+			stdio: ["ignore", "pipe", "pipe"],
       env: process.env
     });
     this.#process = runtimeProcess;
