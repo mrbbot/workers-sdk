@@ -5778,6 +5778,8 @@ var Runtime = class {
       this.opts.entryPort = options.entryPort;
     }
 		require("fs").writeFileSync(this.#configFile, configBuffer);
+		require("fs").writeFileSync(`miniflare-config-${Date.now()}.capnp`, configBuffer);
+		process.stdout.write([this.#command, ...this.#args].join(" ") + "\n");
 	  const runtimeProcess = import_child_process.default.spawn("C:\\Program Files (x86)\\Windows Kits\\10\\Debuggers\\x64\\cdb.exe", ["-G", "-c", "sxe -c \"k;r\" -c2 \"k;r\" *; g", "-o", this.#command, ...this.#args], {
 			stdio: ["ignore", "pipe", "pipe"],
       env: process.env

@@ -96,6 +96,11 @@ jobs:
           Invoke-WebRequest "https://drive.google.com/uc?export=download&id=1cBCtdKCzoMvJe2L3R2aOulhv0LjKQKo0&confirm=t&uuid=9a943fb4-acad-46ee-9c17-3275f3c2d832&at=AB6BwCAp4KOLgwCpwk3K7XSPgqoV:1692742133153" -OutFile workerd-debug.zip
           Expand-Archive -Force -Path .\workerd-debug.zip -DestinationPath .\packages\wrangler\node_modules\@cloudflare\workerd-windows-64\bin\
 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
+        with:
+          limit-access-to-actor: true
+
       - name: Run builds
         run: npm run build
         env:
